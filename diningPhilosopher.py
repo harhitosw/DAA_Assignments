@@ -1,3 +1,5 @@
+# Contributed by Om Londhe 
+
 # Importing sleep from time package, randint from random package along with Thread and Lock from threading package
 from time import sleep
 from random import randint
