@@ -91,6 +91,7 @@ int main()
 		// After all the Philosopher are done, we join the threads back to the main process.
 		pthread_join(threads[i],NULL);
 	}
+	printf("\n");
 	return 0;
 }
 
