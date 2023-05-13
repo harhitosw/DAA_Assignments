@@ -95,10 +95,10 @@ int main()
 	return 0;
 }
 
-void * Philosopher(void * number)
+void * Philosopher(void * philo_num)
 {
 	// First converting the number passed as a void * into integer.
-	int philo = * (int *) number;
+	int philo = * (int *) philo_num;
 
 	/* 
 	
