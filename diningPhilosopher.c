@@ -1,3 +1,13 @@
+/* 
+   >------------------------------------[IMPORTANT]------------------------------------<
+   # Normal Compilation Command :- gcc filename.c -o filename && ./filename
+
+   IF THE ABOVE COMMAND DOESNT WORK THEN,
+
+   # pthread Compilation Command :- gcc filename.c -o filename -lpthread && ./filename
+   >-----------------------------------------------------------------------------------<
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
