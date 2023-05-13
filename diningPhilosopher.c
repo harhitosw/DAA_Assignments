@@ -17,7 +17,7 @@
 
 # Here, the semaphore room is a counting semaphore since there is one dining room which can accommodate 9 philosophers.
 
-# Consider there are 4 chairs in the room and that is the resource. Hence there are multiple instances of the resource in the room. Therefore, room is a counting semaphore.
+# Consider there are 9 chairs in the room and that is the resource. Hence there are multiple instances of the resource in the room. Therefore, room is a counting semaphore.
  
  */
 
