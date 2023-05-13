@@ -1,52 +1,97 @@
-/******************************************************************************
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-vector<int>ans(60);
-int nums=0;
-bool place(int k,int j){
-    for(int i=1;i<=k-1;i++){
-        if(ans[i]==j or (abs(ans[i]-j)==abs(i-k)) ) return false;
-        
+
+bool isSafe(int** arr,int x,int y,int n){
+
+    // column checking
+    for(int row = 0; row < x; row++){
+        if(arr[row][y]==1){
+            return false;
+        }
     }
+
+    // diagonal checking
+    int row = x;
+    int col = y;
+    
+    // left diagonal
+    while(row>=0 && col>=0){
+        if(arr[row][col]==1){
+            return false;
+        }
+        row--;
+        col--;
+    }
+
+    // right diagonal
+    row = x;
+    col = y;
+    
+    while(row>=0 && col<n){
+        if(arr[row][col]==1){
+            return false;
+        }
+        row--;
+        col++;
+    }
+
     return true;
 }
-void Nqueens(int k,int n){
-    if(nums>=1){
-        return;
+
+bool NQueens(int** arr,int x,int n){
+
+    if(x>=n){
+        return true;
     }
-    for(int j=1;j<=n;j++){
-        if(place(k,j)){
-            ans[k]=j;
-            if(k==n) {
-            for(int i=1;i<=n;i++){
-                cout<<ans[i]<<" ";
+
+    // check whether it is safe to place the queen
+
+    for(int col = 0; col < n; col++){
+        if(isSafe(arr,x,col,n)){
+            arr[x][col] = 1;
+
+            if(NQueens(arr,x+1,n)){
+                return true;
             }
-            cout<<endl;
-            nums++;
-        }
-        else{
-            Nqueens(k+1,n);
-        }
+
+            arr[x][col] = 0; // backtracking
         }
     }
-}
-int main()
-{
-    
-    int k=1,n=30;
-    auto start = chrono::high_resolution_clock::now();
-    Nqueens(k,n);
-    auto end = chrono::high_resolution_clock::now();
-    double time_taken = 
-      chrono::duration_cast<chrono::milliseconds>(end - start).count();
-  cout<<"the Time taken is "<<time_taken<<" milli seconds"<<endl;
-    return 0;
+    return false;
 }
 
+int main(int argc, char **argv){
+    //type your code below
+    int n;
+    cout << "Enter a number to begin" << endl;
+    cin >> n;
+
+    // getting the matrix
+
+    int **arr = new int*[n];
+    for(int i = 0; i < n; i++){
+        arr[i] = new int[n];
+        for(int j = 0; j < n; j++){
+            arr[i][j] = 0; 
+        }
+    }
+
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    start = std::chrono::system_clock::now();    
+    if(NQueens(arr,0,n)){
+        for(int i=0;i < n;i++){
+            for(int j = 0;j < n;j++){
+                cout<<arr[i][j];
+            }cout<<endl;
+        }
+    }
+
+    end = std::chrono::system_clock::now();
+    std::chrono::duration<double> elapsed_seconds = end - start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+    std::cout << "finished computation at " << std::ctime(&end_time)
+                << "elapsed time: " << elapsed_seconds.count() << "s\n";    
+
+    return 0;
+}
