@@ -130,7 +130,7 @@ void * Philosopher(void * number)
 	
 	/*
 	
-	 # Now, we apply sem_wait on chopsticks which are binary semaphores.
+	 # Now, we apply sem_wait on forks which are binary semaphores.
 
 	 # At the backend the sem_wait function for binary semaphore looks like :-
 	  >---------------------------------------------------------------------<
@@ -156,7 +156,7 @@ void * Philosopher(void * number)
 
 	 # Here, according to the prototype, if the value of semaphore is one, it is changed to zero indicating that the semaphore is blocked.
 
-	 # In our case we are blocking the Forks towards the left and the right of the philosopher.
+	 # In our case we are blocking the forks towards the left and the right of the philosopher.
 	 
 	 # For example, for philosopher P0, we are blocking Fork F0 and F4. 	   
 
