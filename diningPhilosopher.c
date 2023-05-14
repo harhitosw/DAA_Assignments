@@ -123,6 +123,7 @@ void * Philosopher(void * philo_num)
 					int count;
 					queueType queue;
 			};
+
 			void sem_wait(semaphore s)
 			{		
 					s.count--;
@@ -192,9 +193,9 @@ void * Philosopher(void * philo_num)
 			void sem_post(semaphore s)
 			{
 					if(s.queue is empty)
-				{
+					{
 						s.value=one;
-				}
+					}
 					else
 					{
 							// remove a process P from s.queue 
