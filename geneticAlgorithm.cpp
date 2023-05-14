@@ -245,7 +245,7 @@ int main(){
     };
     cout<<endl;
     // we will be generating 300 different generations we change it as per as our requirements
-    int maxGenerations=300;
+    int maxGenerations=30;
     while(maxGenerations--){
     vector<float>cumalative=getFitnessandNormalized(input);
     crossOverAndMutations(population,cumalative);

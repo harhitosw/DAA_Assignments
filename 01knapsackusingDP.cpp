@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// using tabulation 
 int solve(int n,int m,vector<int>&weight,vector<int>&profit){
     vector<vector<int>>dp(n+1,vector<int>(m+1));
     for(int i=0;i<=n;i++){
@@ -42,6 +43,21 @@ int solve(int n,int m,vector<int>&weight,vector<int>&profit){
 
     return dp[n][m];
 }
+// using memoization
+int KnapsackMemoize(int w,int n,vector<int>&wght,vector<int>&prft,vector<vector<int>>&dpm){
+      // if found than return that instantly
+      if(dpm[n][w]!=-1) return dpm[n][w];
+      if(n==0 or w==0) {
+        dpm[n][w]=0;
+        return 0;
+      }
+       if(wght[n-1]>w){
+        dpm[n][w]=KnapsackMemoize(w,n-1,wght,prft,dpm);
+        return dpm[n][w];
+      }
+return dpm[n][w]=max(prft[n-1]+KnapsackMemoize(w-wght[n-1],n-1,wght,prft,dpm),KnapsackMemoize(w,n-1,wght,prft,dpm));
+}
+// using recursion 
 int KnapsackRecursive(int n,int m,vector<int>&weight,vector<int>&profit){
         if (n == 0 || m== 0)
         return 0;
@@ -76,7 +92,11 @@ int main(){
         cout<<"Enter the profit associated with the object"<<i<<endl;
         cin>>profit[i];
     }*/
-    int ans=solve(weight.size(),90,weight,profit);
-    cout<<"the Maximum profit is "<<ans<<endl;
+  //  int ans=solve(weight.size(),90,weight,profit);
+    int n=7,w=90;
+    vector<vector<int>> dpm(n+1,vector<int>(w+1,-1));
+    int ans1=KnapsackMemoize(w,n,weight,profit,dpm);
+
+    cout<<"the Maximum profit is "<<ans1<<endl;
     return 0;
 }
