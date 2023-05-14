@@ -159,7 +159,7 @@ void * Philosopher(void * philo_num)
 					if(s.value == one)
 					{
 					s.value = zero;
-				}
+					}
 					else
 					{
 							// place this process in s.queue 
