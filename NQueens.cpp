@@ -2,7 +2,6 @@
 using namespace std;
 
 bool isSafe(int** arr,int x,int y,int n){
-
     // column checking
     for(int row = 0; row < x; row++){
         if(arr[row][y]==1){
