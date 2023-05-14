@@ -1,3 +1,5 @@
+// This code also prints no of ways
+
 #include <iostream>
 #include <cstdlib>
 #include <chrono>
