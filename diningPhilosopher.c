@@ -129,8 +129,8 @@ void * Philosopher(void * philo_num)
 					s.count--;
 					if(s.count<0)
 					{
-							// place this process in s.queue
-							// block this process     
+						// place this process in s.queue
+						// block this process     
 					}
 			}
 		>-------------------------------------------------------------------<
@@ -158,12 +158,12 @@ void * Philosopher(void * philo_num)
 			{
 					if(s.value == one)
 					{
-					s.value = zero;
+						s.value = zero;
 					}
 					else
 					{
-							// place this process in s.queue 
-							// block this process
+						// place this process in s.queue 
+						// block this process
 					}
 			}
 		>--------------------------------------------------------------------<
@@ -198,8 +198,8 @@ void * Philosopher(void * philo_num)
 					}
 					else
 					{
-							// remove a process P from s.queue 
-							// place process P on ready list 
+						// remove a process P from s.queue 
+						// place process P on ready list 
 					}
 			}
 		>----------------------------------------------------------------------<
@@ -219,4 +219,3 @@ void Eat(int philo)
 {
 	printf("\nPhilosopher %d is Eating", philo);
 }
-
